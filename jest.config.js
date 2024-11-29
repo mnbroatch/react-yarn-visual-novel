@@ -4,7 +4,7 @@ module.exports = {
   },
   testEnvironment: 'jsdom',
   transformIgnorePatterns: [
-    '/node_modules/(?!yarn-bound|@mnbroatch).+\\.js$'
+    '/node_modules/(?!yarn-bound|@mnbroatch|react-dialogue-tree).+\\.js$'
   ],
   moduleNameMapper: {
     '^.+\\.(css|less|scss)$': 'babel-jest'

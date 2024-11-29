@@ -1,9 +1,7 @@
 import React from 'react'
 import DialogueTree from '../src/index'
 import { ErrorBoundary } from 'react-error-boundary'
-import WriteInTheWordsNode from './write-in-the-words/custom-node'
 import './styles.css'
-import './write-in-the-words/styles.scss'
 
 const dialogue = `
 title: Start
@@ -77,12 +75,3 @@ const Template = (props) => {
 }
 
 export const Basic = Template.bind({})
-
-
-export const WriteInTheWords = Template.bind({})
-WriteInTheWords.args = {
-  customNode: WriteInTheWordsNode,
-  className: 'write-in-the-words',
-  combineTextAndOptionsResults: false
-}
-

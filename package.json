@@ -1,8 +1,8 @@
 {
-  "name": "react-dialogue-tree",
-  "version": "0.12.9",
-  "description": "Flexible Dialogue Tree for React",
-  "main": "dist/react-dialogue-tree.js",
+  "name": "react-yarn-visual-novel",
+  "version": "0.0.0",
+  "description": "Yarn-Powered Visual Novel for React",
+  "main": "dist/react-yarn-visual-novel.js",
   "scripts": {
     "start": "storybook dev p 6006",
     "test": "jest --verbose false",
@@ -14,19 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mnbroatch/react-dialogue-tree.git"
+    "url": "git+https://github.com/mnbroatch/react-yarn-visual-novel.git"
   },
   "keywords": [
     "react",
-    "dialogue",
+    "visual novel",
     "ui"
   ],
   "author": "Matthew Broatch",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mnbroatch/react-dialogue-tree/issues"
+    "url": "https://github.com/mnbroatch/react-yarn-visual-novel/issues"
   },
-  "homepage": "https://github.com/mnbroatch/react-dialogue-tree",
+  "homepage": "https://github.com/mnbroatch/react-yarn-visual-novel",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/plugin-proposal-object-rest-spread": "",
@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-error-boundary": "^3.1.4",
-    "yarn-bound": "0.5.4"
+    "react-dialogue-tree": "^0.12.11",
+    "react-error-boundary": "^3.1.4"
   }
 }

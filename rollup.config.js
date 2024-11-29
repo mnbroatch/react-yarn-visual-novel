@@ -9,15 +9,15 @@ const config = [
     external: ['react'],
     output: {
       format: 'umd',
-      file: 'dist/react-dialogue-tree.js',
-      name: 'ReactDialogueTree'
+      file: 'dist/react-yarn-visual-novel.js',
+      name: 'ReactYarnVisualNovel'
     },
     plugins: [
       resolve({
-        only: ['yarn-bound', /^@mnbroatch\/.*$/]
+        only: ['yarn-bound', 'react-dialogue-tree', /^@mnbroatch\/.*$/]
       }),
       babel({
-        exclude: /node_modules\/(?!yarn-bound|@mnbroatch).+/
+        exclude: /node_modules\/(?!yarn-bound|react-dialogue-tree|@mnbroatch).+/
       }),
       scss()
     ]
@@ -27,15 +27,15 @@ const config = [
     external: ['react'],
     output: {
       format: 'umd',
-      file: 'dist/react-dialogue-tree.min.js',
-      name: 'ReactDialogueTree'
+      file: 'dist/react-yarn-visual-novel.min.js',
+      name: 'ReactYarnVisualNovel'
     },
     plugins: [
       resolve({
-        only: ['yarn-bound', /^@mnbroatch\/.*$/]
+        only: ['yarn-bound', 'react-dialogue-tree', /^@mnbroatch\/.*$/]
       }),
       babel({
-        exclude: /node_modules\/(?!yarn-bound|@mnbroatch).+/
+        exclude: /node_modules\/(?!yarn-bound|react-dialogue-tree|@mnbroatch).+/
       }),
       scss({ outputStyle: 'compressed' }),
       terser()
