@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ReactDialogueTree from 'react-dialogue-tree'
+import ReactDialogueTree from 'react-dialogue-tree/src/index'
 
 export default function ReactYarnVisualNovel ({ dialogue }) {
   return (
