@@ -3601,10 +3601,16 @@
   function ReactYarnVisualNovel({
     dialogue
   }) {
-    return /*#__PURE__*/React__default["default"].createElement(DialogueTreeContainer, {
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "react-yarn-visual-novel"
+    }, /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "animation-stage"
+    }), /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "dialogue-tree-container"
+    }, /*#__PURE__*/React__default["default"].createElement(DialogueTreeContainer, {
       className: "mnbroatch-react-yarn-visual-novel",
       dialogue: dialogue
-    });
+    })));
   }
   ReactYarnVisualNovel.propTypes = {
     dialogue: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].shape({

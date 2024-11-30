@@ -4,10 +4,16 @@ import ReactDialogueTree from 'react-dialogue-tree/src/index'
 
 export default function ReactYarnVisualNovel ({ dialogue }) {
   return (
-    <ReactDialogueTree
-      className='mnbroatch-react-yarn-visual-novel'
-      dialogue={dialogue}
-    />
+    <div className="react-yarn-visual-novel">
+      <div className="animation-stage">
+      </div>
+      <div className="dialogue-tree-container">
+        <ReactDialogueTree
+          className='mnbroatch-react-yarn-visual-novel'
+          dialogue={dialogue}
+        />
+      </div>
+    </div>
   )
 }
 

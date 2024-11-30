@@ -1,5 +1,5 @@
 import React from 'react'
-import DialogueTree from '../src/index'
+import ReactYarnVisualNovel from '../src/index'
 import { ErrorBoundary } from 'react-error-boundary'
 import './styles.css'
 
@@ -29,9 +29,9 @@ You Jumped!
 `
 
 export default {
-  title: 'DialogueTree',
-  component: DialogueTree,
-  className: 'dialogue-tree-container',
+  title: 'ReactYarnVisualNovel',
+  component: ReactYarnVisualNovel,
+  className: 'react-yarn-visual-novel',
   args: {
     dialogue,
   },
@@ -45,23 +45,21 @@ export default {
 const Template = (props) => {
   return (
     <div className="story">
-      <div className={props.className}>
-        <ErrorBoundary
-          resetKeys={[props.dialogue]}
-          fallbackRender={({ error }) => {
-            return (
-              <div>
-                Invalid Dialogue: {error.message}
-              </div>
-            )
-          }}
-        >
-          <DialogueTree
-            {...props}
-            onDialogueEnd={() => { alert('onDialogueEnd called') }}
-          />
-        </ErrorBoundary>
-      </div>
+      <ErrorBoundary
+        resetKeys={[props.dialogue]}
+        fallbackRender={({ error }) => {
+          return (
+            <div>
+              Invalid Dialogue: {error.message}
+            </div>
+          )
+        }}
+      >
+        <ReactYarnVisualNovel
+          {...props}
+          onDialogueEnd={() => { alert('onDialogueEnd called') }}
+        />
+      </ErrorBoundary>
     </div>
   )
 }

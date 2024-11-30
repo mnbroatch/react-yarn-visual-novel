@@ -1,3 +1,6 @@
+html, body, #storybook-root, .story, .react-yarn-visual-novel {
+  height: 100%; }
+
 .dialogue-tree .chat-scroller {
   height: 100%;
   box-sizing: border-box;
