@@ -13,7 +13,7 @@ I am a line that is long enough to wrap around smaller text boxes
   I am the line after the second option!
 -> I am a disabled option<<if false is true>>
   X
-I am another line. Today's date is {getTodaysDate()}
+I am another line.
 <<if true == true>>
 Let's jump!
 <<jump Two>>
@@ -28,20 +28,12 @@ You Jumped!
 ===
 `
 
-// I am another line. Today's date is {getTodaysDate()}
-// <<do thing>>
-// blah
-// ===`
-
 export default {
   title: 'DialogueTree',
   component: DialogueTree,
   className: 'dialogue-tree-container',
   args: {
     dialogue,
-    functions: {
-      getTodaysDate: () => new Date()
-    }
   },
   argTypes: {
     dialogue: {

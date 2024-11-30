@@ -3,10 +3,7 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: [
-    'plugin:react/recommended',
-    'standard'
-  ],
+  extends: ['plugin:react/recommended', 'standard', 'plugin:storybook/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
