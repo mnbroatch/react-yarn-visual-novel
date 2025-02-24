@@ -9,7 +9,6 @@ export default function ReactYarnVisualNovel ({ dialogue }) {
       </div>
       <div className="dialogue-tree-container">
         <ReactDialogueTree
-          className='mnbroatch-react-yarn-visual-novel'
           dialogue={dialogue}
         />
       </div>
