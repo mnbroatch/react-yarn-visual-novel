@@ -3608,7 +3608,6 @@
     }), /*#__PURE__*/React__default["default"].createElement("div", {
       className: "dialogue-tree-container"
     }, /*#__PURE__*/React__default["default"].createElement(DialogueTreeContainer, {
-      className: "mnbroatch-react-yarn-visual-novel",
       dialogue: dialogue
     })));
   }

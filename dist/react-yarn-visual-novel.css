@@ -1,5 +1,16 @@
-html, body, #storybook-root, .story, .react-yarn-visual-novel {
+html, body, #storybook-root, .story, .react-yarn-visual-novel, .dialogue-tree {
   height: 100%; }
+
+.dialogue-tree-container {
+  flex: 1 1 1%;
+  overflow-y: auto; }
+
+.react-yarn-visual-novel {
+  display: flex;
+  flex-direction: column; }
+
+.animation-stage {
+  flex: 2; }
 
 .dialogue-tree .chat-scroller {
   height: 100%;
