@@ -6,25 +6,10 @@ import './styles.css'
 const dialogue = `
 title: Start
 ---
-I am a line that is long enough to wrap around smaller text boxes
--> I am an option
-  I am the line after the first option!
--> I am a second option
-  I am the line after the second option!
--> I am a disabled option<<if false is true>>
-  X
-I am another line.
-<<if true == true>>
-Let's jump!
-<<jump Two>>
-<<else>>
-X
-<<endif>>
-===
-
-title: Two
----
-You Jumped!
+Red: Hello.
+Blue: Hi!
+Red: I'm here.
+Blue: I'm here too!
 ===
 `
 

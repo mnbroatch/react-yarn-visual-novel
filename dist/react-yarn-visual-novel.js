@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react'), require('prop-types')) :
-  typeof define === 'function' && define.amd ? define(['react', 'prop-types'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ReactYarnVisualNovel = factory(global.React, global.PropTypes));
-})(this, (function (React, PropTypes) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react'), require('prop-types'), require('react-transition-group')) :
+  typeof define === 'function' && define.amd ? define(['react', 'prop-types', 'react-transition-group'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.ReactYarnVisualNovel = factory(global.React, global.PropTypes, global.reactTransitionGroup));
+})(this, (function (React, PropTypes, reactTransitionGroup) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -3456,7 +3456,7 @@
     customNode: PropTypes__default["default"].elementType
   };
 
-  function useForceUpdate() {
+  function useForceUpdate$1() {
     const [value, setValue] = React.useState(0);
     return () => setValue(value => value + 1);
   }
@@ -3471,13 +3471,15 @@
     pauseCommand,
     combineTextAndOptionsResults = true,
     onDialogueEnd = () => {},
+    onAdvance = () => {},
     defaultOption = 'Next',
     finalOption = 'End',
     customNode,
     locale
   }) {
     const [hasDialogueEnded, setHasDialogueEnded] = React.useState(false);
-    const runnerRef = React.useRef(runner || new YarnBound({
+    const runnerRef = React.useRef(runner);
+    runnerRef.current ??= new YarnBound({
       dialogue,
       startAt,
       functions,
@@ -3486,14 +3488,15 @@
       pauseCommand,
       combineTextAndOptionsResults,
       locale
-    }));
-    const forceUpdate = useForceUpdate();
+    });
+    const forceUpdate = useForceUpdate$1();
     const advance = React.useCallback(optionIndex => {
       if (runnerRef.current.currentResult.isDialogueEnd) {
         setHasDialogueEnded(true);
         onDialogueEnd();
       }
       runnerRef.current.advance(optionIndex);
+      onAdvance(runnerRef.current);
       forceUpdate();
     }, [runnerRef.current]);
     React.useEffect(() => {
@@ -3502,6 +3505,9 @@
         runnerRef.current.runner.setVariableStorage(variableStorage);
       }
     }, [combineTextAndOptionsResults, variableStorage]);
+    React.useEffect(() => {
+      onAdvance(runnerRef.current);
+    }, []);
     return /*#__PURE__*/React__default["default"].createElement(DialogueTree, {
       className: "mnbroatch-react-dialogue-tree",
       currentResult: hasDialogueEnded ? null : runnerRef.current.currentResult,
@@ -3528,6 +3534,7 @@
     pauseCommand: PropTypes__default["default"].string,
     combineTextAndOptionsResults: PropTypes__default["default"].bool,
     onDialogueEnd: PropTypes__default["default"].func,
+    onAdvance: PropTypes__default["default"].func,
     defaultOption: PropTypes__default["default"].string,
     finalOption: PropTypes__default["default"].string,
     locale: PropTypes__default["default"].string,
@@ -3598,17 +3605,49 @@
     advance: PropTypes__default["default"].func
   };
 
+  function useForceUpdate() {
+    const [value, setValue] = React.useState(0);
+    return () => setValue(value => value + 1);
+  }
+
+  const characterImagesDict = {
+    Red: {
+      default: 'red.png'
+    },
+    Blue: {
+      default: 'blue.png'
+    }
+  };
   function ReactYarnVisualNovel({
     dialogue
   }) {
+    const runnerRef = React.useRef();
+    const forceUpdate = useForceUpdate();
+    const characterName = runnerRef.current?.currentResult.markup?.find(m => m.name === 'character')?.properties.name;
+    const characterImages = characterName ? [characterImagesDict[characterName].default] : [];
+    console.log('characterImages', characterImages);
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: "react-yarn-visual-novel"
-    }, /*#__PURE__*/React__default["default"].createElement("div", {
+    }, /*#__PURE__*/React__default["default"].createElement(reactTransitionGroup.TransitionGroup, {
       className: "animation-stage"
-    }), /*#__PURE__*/React__default["default"].createElement("div", {
+    }, characterImages.map(character => /*#__PURE__*/React__default["default"].createElement(reactTransitionGroup.CSSTransition, {
+      key: character,
+      timeout: 10000,
+      classNames: "character-image",
+      appear: true
+    }, /*#__PURE__*/React__default["default"].createElement("img", {
+      className: 'animation-stage__character',
+      src: character
+    })))), /*#__PURE__*/React__default["default"].createElement("div", {
       className: "dialogue-tree-container"
     }, /*#__PURE__*/React__default["default"].createElement(DialogueTreeContainer, {
-      dialogue: dialogue
+      dialogue: dialogue,
+      onAdvance: runner => {
+        if (!runnerRef.current) {
+          runnerRef.current = runner;
+        }
+        forceUpdate();
+      }
     })));
   }
   ReactYarnVisualNovel.propTypes = {

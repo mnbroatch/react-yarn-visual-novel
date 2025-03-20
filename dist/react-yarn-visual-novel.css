@@ -1,16 +1,35 @@
 html, body, #storybook-root, .story, .react-yarn-visual-novel, .dialogue-tree {
   height: 100%; }
 
-.dialogue-tree-container {
-  flex: 1 1 1%;
-  overflow-y: auto; }
-
 .react-yarn-visual-novel {
-  display: flex;
-  flex-direction: column; }
+  position: relative;
+  overflow: hidden; }
 
-.animation-stage {
-  flex: 2; }
+.dialogue-tree-container {
+  overflow-y: auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
+.animation-stage__character {
+  position: absolute;
+  transition: all 500ms ease-in; }
+
+.character-image-enter {
+  left: -100%;
+  opacity: 0; }
+
+.character-image-enter-active {
+  left: 0;
+  opacity: 1; }
+
+.character-image-exit {
+  left: 0;
+  opacity: 1; }
+
+.character-image-exit-active {
+  left: -100%;
+  opacity: 0; }
 
 .dialogue-tree .chat-scroller {
   height: 100%;
